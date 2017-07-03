@@ -17,20 +17,33 @@
         <nuxt-link to="/users/add">
           Normal nuxt-link to /users/add
         </nuxt-link>
-        <template v-for="(item, i) in items">
-          <v-list-item>
-            <v-list-tile :href="item.link" nuxt ripple>
-              <v-list-tile-action>
-                <mdi :icon="item.icon"></mdi>
-              </v-list-tile-action>
-              <v-list-tile-content>
-                <v-list-tile-title>
-                  {{ item.text }}
-                </v-list-tile-title>
-              </v-list-tile-content>
-            </v-list-tile>
-          </v-list-item>
-        </template>
+
+        <v-list-item>
+          <v-list-tile href="/users" nuxt ripple>
+            <v-list-tile-action>
+              <mdi icon="account"></mdi>
+            </v-list-tile-action>
+            <v-list-tile-content>
+              <v-list-tile-title>
+                Users
+              </v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
+        </v-list-item>
+
+        <v-list-item>
+          <v-list-tile href="/users/add" nuxt ripple>
+            <v-list-tile-action>
+              <mdi icon="account"></mdi>
+            </v-list-tile-action>
+            <v-list-tile-content>
+              <v-list-tile-title>
+                Users Add
+              </v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
+        </v-list-item>
+
       </v-list>
     </v-navigation-drawer>
 
