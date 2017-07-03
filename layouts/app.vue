@@ -7,19 +7,19 @@
       <v-spacer></v-spacer>
     </v-toolbar>
 
-    <v-navigation-drawer hide-overlay v-model="drawer" light clipped persistent enable-resize-watcher>
+    <v-navigation-drawer hide-overlay v-model="drawer" light clipped persistent disable-route-watcher>
       <v-list dense>
+        <nuxt-link to="/users">
+          Normal nuxt-link to /users
+        </nuxt-link>
+        <br>
+        <br>
+        <nuxt-link to="/users/add">
+          Normal nuxt-link to /users/add
+        </nuxt-link>
         <template v-for="(item, i) in items">
-          <v-layout row v-if="item.heading" align-center :key="i">
-            <v-flex xs6>
-              <v-subheader v-if="item.heading">
-                {{ item.heading }}
-              </v-subheader>
-            </v-flex>
-          </v-layout>
-          <v-divider dark v-else-if="item.divider" class="my-4" :key="i"></v-divider>
-          <v-list-item :key="i" v-else>
-            <v-list-tile>
+          <v-list-item>
+            <v-list-tile :href="item.link" nuxt ripple>
               <v-list-tile-action>
                 <mdi :icon="item.icon"></mdi>
               </v-list-tile-action>
@@ -37,7 +37,7 @@
     <main>
       <v-navigation-drawer temporary v-model="left"></v-navigation-drawer>
       <v-container fluid>
-        <nuxt/>
+        <nuxt></nuxt>
       </v-container>
       <v-navigation-drawer right temporary v-model="right"></v-navigation-drawer>
     </main>
@@ -61,32 +61,8 @@
         right: null,
         left: null,
         items: [
-          { icon: 'view-dashboard', text: 'Dashboard' },
-          { divider: true },
-          { heading: 'Admin' },
-          { icon: 'account', text: 'Users' },
-          { icon: 'domain', text: 'Organizations' },
-          { icon: 'account-settings-variant', text: 'Roles' },
-          { icon: 'attachment', text: 'Files & Attachments' },
-          { icon: 'message-outline', text: 'Notifications' },
-
-          { heading: 'Learning' },
-          { icon: 'settings', text: 'Learning Settings' },
-          { icon: 'source-fork', text: 'Curriculums' },
-          { icon: 'presentation-play', text: 'Courses' },
-          { icon: 'calendar', text: 'Sessions' },
-          { icon: 'attachment', text: 'Course Materials' },
-          { icon: 'school', text: 'Students' },
-          { icon: 'map-marker-multiple', text: 'Locations' },
-          { icon: 'keyboard', text: 'Approval Requests' },
-          { icon: 'certificate', text: 'Certificates' },
-          { icon: 'chart-line', text: 'Reports' },
-
-          { heading: 'Site Settings' },
-          { icon: 'palette', text: 'Theme Options' },
-          { icon: 'key-variant', text: 'Manage License' },
-          { icon: 'cart', text: 'E-Commerce' }
-
+          { icon: 'view-dashboard', text: 'Dashboard', link: '/users/add' },
+          { icon: 'account', text: 'Users', link: '/users' }
         ]
       }
     }
@@ -139,5 +115,9 @@
   .button--grey:hover {
     color: #fff;
     background-color: #35495e;
+  }
+
+  .toolbar {
+    z-index: 6;
   }
 </style>

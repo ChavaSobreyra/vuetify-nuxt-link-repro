@@ -1,4 +1,3 @@
-
 <template>
   <div>
     <nuxt-child></nuxt-child>
@@ -7,9 +6,6 @@
 
 <script>
   export default {
-
-    layout: 'app',
+    layout: 'app'
   }
 </script>
-
-
